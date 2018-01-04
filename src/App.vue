@@ -8,6 +8,9 @@
 </template>
 
 <script>
+  axios.defaults.withCredentials = true;
+  axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+  
   export default {
     // data: function() {
     //   return {

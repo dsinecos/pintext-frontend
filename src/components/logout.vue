@@ -7,6 +7,7 @@
 </template>
 
 <script>
+
     export default {
         data: function () {
             return {
@@ -16,11 +17,11 @@
         created: function () {
             var self = this;
 
-            axios.get('http://localhost:2348/users/logout/')
+            axios.get('http://localhost:2348/user/logout/')
                 .then(function (response) {
                     console.log(response);
-                    self.serverResponse = response;
-                    if (response.data === 'Logged out') {
+                    self.serverResponse = response.data;
+                    if (response.data.developmentMessage === 'Success') {
                         self.$store.state.authenticationStatus = false;
                     }
                 })

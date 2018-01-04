@@ -19,7 +19,8 @@
 
                             <button type="submit">Sign Up</button>
 
-                            <p style="font-size: 12px;">By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                            <p style="font-size: 12px;">By creating an account you agree to our
+                                <a href="#">Terms & Privacy</a>.</p>
 
 
                 </form>
@@ -42,7 +43,9 @@
                             <div class="form-buttons">
 
                                 <button type="submit">Login</button>
-                                <span><a href="#">Forgot password?</a></span>
+                                <span>
+                                    <a href="#">Forgot password?</a>
+                                </span>
 
                             </div>
 
@@ -53,7 +56,6 @@
 </template>
 
 <script>
-    axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
     export default {
         data: function () {
@@ -71,7 +73,7 @@
         },
         methods: {
             onSubmitSignup: function () {
-                axios.post('http://localhost:2348/users/', {
+                axios.post('http://localhost:2348/user/signup', {
                     username: this.signup.username,
                     password: this.signup.password
                 })
@@ -85,7 +87,7 @@
             onSubmitLogin: function () {
                 var self = this;
 
-                axios.post('http://localhost:2348/users/login/', {
+                axios.post('http://localhost:2348/user/login/', {
                     username: this.login.username,
                     password: this.login.password
                 })
@@ -95,6 +97,7 @@
 
                         if (response.status === 200) {
                             self.$store.state.authenticationStatus = true;
+                            console.log(self.$store.state.authenticationStatus)
                         }
 
                     })
@@ -140,6 +143,7 @@
     .signup-form {
         border-right: 7px inset #888888;
     }
+
     /* .username,
     .password {
         margin: 10px;
@@ -160,6 +164,7 @@
     .form-buttons button {
         margin: 8px;
     }
+
     /* .form-buttons a {
         float: right;
     } */
