@@ -5,13 +5,10 @@
                 <div class="col-sm-12">
 
                     <div class="snippet">
-                        <h3>Title</h3>
-                        <p class="style-for-url">Source</p>
-                        <p>I went to a Deutsche Bank Hackathon last year in Berlin where they announced opening up their apis.
-                            https://developer.db.com/ They touted it as being innovative and open but in the end all Banks
-                            are required to open up when PSD2 comes into effect next year. Seeing this release, maybe they
-                            have honest intentions for being more open, but it being Deutsche i still have my doubts. Does
-                            this work. Looks like it does. 1. Does this work too. 2. Looks like it does. 3. Hoye Hoye Hoye</p>
+                        <!-- <h1>{{ snippet_hash }}</h1> -->
+                        <h3>{{ viewSnippet.snippet_title }}</h3>
+                        <p class="style-for-url">{{ viewSnippet.snippet_reference }}</p>
+                        <p>{{ viewSnippet.snippet_content }}</p>
                     </div>
 
                 </div>
@@ -21,8 +18,24 @@
 </template>
 
 <script>
-    export default {
 
+    export default {
+        data: function() {
+            return {
+                snippet_hash: this.$route.params.hash,
+            }
+        },
+        computed: {
+            viewSnippet: function() {
+                var self = this;
+
+                for(var snippet of self.$store.state.snippetList) {
+                    if(snippet.snippet_hash === this.snippet_hash) {
+                        return snippet;
+                    }
+                }
+            }
+        }
     }
 
 </script>

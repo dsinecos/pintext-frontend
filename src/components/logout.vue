@@ -23,6 +23,9 @@
                     self.serverResponse = response.data;
                     if (response.data.developmentMessage === 'Success') {
                         self.$store.state.authenticationStatus = false;
+                        self.$store.state.snippetList.length = 0;
+                        self.$store.state.viewSnippet = {};
+                        
                     }
                 })
                 .catch(function (error) {

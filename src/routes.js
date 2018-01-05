@@ -4,6 +4,7 @@ import unauthenticatedNavbar from './components/unauthenticatedNavbar.vue';
 import loginSignup from './components/loginSignup.vue';
 import logout from './components/logout.vue';
 
+import snippet from './components/snippet.vue';
 import createPreviewSnippet from './components/createPreviewSnippet.vue';
 import viewSingleSnippet from './components/viewSingleSnippet.vue';
 import viewAllSnippets from './components/viewAllSnippets.vue';
@@ -18,14 +19,6 @@ export const routes = [
             'authenticated-navbar': authenticatedNavbar,
             'unauthenticated-navbar': unauthenticatedNavbar,
             'page-content': createPreviewSnippet
-        }
-    },
-    {
-        path: '/snippet/:hash',
-        components: {
-            'authenticated-navbar': authenticatedNavbar,
-            'unauthenticated-navbar': unauthenticatedNavbar,
-            'page-content': viewSingleSnippet
         }
     },
     {
@@ -61,11 +54,21 @@ export const routes = [
         }
     },
     {
-        path: '/snippet/view-all/',
+        path: '/snippet',
         components: {
             'authenticated-navbar': authenticatedNavbar,
             'unauthenticated-navbar': unauthenticatedNavbar,
-            'page-content': viewAllSnippets
-        }
-    },
+            'page-content': snippet
+        },
+        children: [
+            {
+                path: 'view-all',
+                component: viewAllSnippets
+            },
+            {
+                path: ':hash',
+                component: viewSingleSnippet
+            },            
+        ]
+    }
 ]
