@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html lang=en>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pintext</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.5/vue.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12 snippet_container">
+                <div class="row">
+
+                    <div class="col-sm-5 col-sm-offset-1 create_snippet">
+                        <h3 class="snippet_title">Create Snippet</h3>
+
+                        <div class="snippet_form">
+                            <form>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="title" placeholder="Title (Optional)" v-model="pintextTitle">
+                                </div>
+
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="source" placeholder="Reference (URL) (Optional)" v-model="pintextSource">
+                                </div>
+
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="12" name="textsnippet" placeholder="Paste your text snippet here (Required)" v-model="pintextSnippet"
+                                        required></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <button class="btn btn-success btn-block btn-justify" type="submit" value="Generate Permalink">Generate Permalink</button>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Permalink">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-primary" type="button">Copy</button>
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-5 preview_snippet">
+                        <h3 class="snippet_title">Preview Snippet</h3>
+                        <!-- Insert Preview -->
+                        <h1>Title</h1>
+                        <h6>Reference</h6>
+                        <p>Snippet Content</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script type="text/javascript">
+
+</script>
+
+<style>
+    body {
+        background-color: #F8F8F8;
+        font-family: 'Open Sans', sans-serif;
+        color: #555;
+    }
+
+    .snippet_container {
+        margin: 20px;
+        padding: 30px;
+        /* border: solid 1px; */
+    }
+
+    .create_snippet {
+        padding: 30px;
+        /* border: solid 1px; */
+
+    }
+
+    .snippet_form {
+        margin-top: 18.76px;
+    }
+
+    .preview_snippet {
+        padding: 30px;
+        padding-left: 50px;
+        /* border: solid 1px; */
+
+    }
+
+</style>
+
+</html>
