@@ -149,7 +149,7 @@
 
 <style>
     .search-bar {
-        margin-top: 40px;
+        margin-top: 100px;
         margin-bottom: 20px;
     }
 
