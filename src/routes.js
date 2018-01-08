@@ -2,6 +2,8 @@ import authenticatedNavbar from './components/authenticatedNavbar.vue';
 import unauthenticatedNavbar from './components/unauthenticatedNavbar.vue';
 
 import loginSignup from './components/loginSignup.vue';
+import login from './components/login.vue';
+import signup from './components/signup.vue';
 import logout from './components/logout.vue';
 
 import snippet from './components/snippet.vue';
@@ -21,12 +23,28 @@ export const routes = [
             'page-content': createPreviewSnippet
         }
     },
+    // {
+    //     path: '/login-signup/',
+    //     components: {
+    //         'authenticated-navbar': authenticatedNavbar,
+    //         'unauthenticated-navbar': unauthenticatedNavbar,
+    //         'page-content': loginSignup
+    //     }
+    // },
     {
-        path: '/login-signup/',
+        path: '/login/',
         components: {
             'authenticated-navbar': authenticatedNavbar,
             'unauthenticated-navbar': unauthenticatedNavbar,
-            'page-content': loginSignup
+            'page-content': login
+        }
+    },
+    {
+        path: '/signup/',
+        components: {
+            'authenticated-navbar': authenticatedNavbar,
+            'unauthenticated-navbar': unauthenticatedNavbar,
+            'page-content': signup
         }
     },
     {

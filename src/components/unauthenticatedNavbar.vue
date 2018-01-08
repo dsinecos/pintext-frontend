@@ -25,11 +25,11 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <!-- <a href="#">Login</a> -->
-                            <router-link to="/login-signup/">Login</router-link>
+                            <router-link to="/login/">Login</router-link>
                         </li>
                         <li>
                             <!-- <a href="#">SignUp</a> -->
-                            <router-link to="/login-signup/">Sign up</router-link>
+                            <router-link to="/signup/">Sign up</router-link>
                         </li>
                         <li>
                             <!-- <a href="#">About</a> -->
