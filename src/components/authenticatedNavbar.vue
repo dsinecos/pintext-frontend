@@ -1,12 +1,45 @@
 <template>
     <div>
-        <ul id="pintext_navbar">
+        <!-- <ul id="pintext_navbar">
             <li id="pintext_navbar_title"><router-link to="/">Pintext</router-link></li>
             <li><router-link to="/about/">About</router-link></li>
             <li><router-link to="/contact/">Contact</router-link></li>
             <li><router-link to="/logout/">Logout</router-link></li>
             <li><router-link to="/snippet/view-all/">Show All Snippets</router-link></li>
-        </ul>
+        </ul> -->
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#pintext-authenticated-navbar"
+                        aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- <a class="navbar-brand" href="#">Pintext</a> -->
+                    <router-link to="/" class="navbar-brand">Pintext</router-link>
+                </div>
+                <div class="collapse navbar-collapse" id="pintext-authenticated-navbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <!-- <a href="#">View All Snippets</a> -->
+                            <router-link to="/snippet/view-all/">View All Snippets</router-link>
+                        </li>
+                        <li>
+                            <!-- <a href="#">Logout</a> -->
+                            <router-link to="/logout/">Logout</router-link>
+                        </li>
+                        <li>
+                            <!-- <a href="#">About</a> -->
+                            <router-link to="/about/">About</router-link>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
     </div>
 </template>
 
@@ -17,7 +50,7 @@
 </script>
 
 <style>
-    ul {
+    /* ul {
         list-style-type: none;
         background-color: #F8F9FA;
         overflow: hidden;
@@ -28,28 +61,19 @@
         float: right;
         margin-right: 20px;
         padding: 10px;
-        /* border: 12px, solid, blue; */
     }
 
     li a {
         display: inline-block;
         color: #50596c;
-        /* text-align: center; */
-        /* padding: 14px 10px; */
         padding: 5px;
-
-        /* margin-top: 10%; */
-        /* text-decoration: none; */
-        /* font-weight: bold; */
         font-size: 1.15em;
-        /* border: 12px, solid, blue; */
     }
 
     li a:hover {
         background-color: #ddd;
         text-decoration: none;
         border-radius: 4px;
-        /* border: 12px, solid, blue; */
     }
 
     li a,
@@ -66,6 +90,5 @@
         font-size: 1.5em;
         margin-left: 2%;
         text-decoration: none;
-        /* padding: 5px; */
-    }
+    } */
 </style>
