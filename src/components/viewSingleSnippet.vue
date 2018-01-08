@@ -1,16 +1,28 @@
 <template>
     <div>
-        <div class="container">
+        <!-- <div class="container">
             <div class="row">
                 <div class="col-sm-12">
 
                     <div class="snippet">
-                        <!-- <h1>{{ snippet_hash }}</h1> -->
+                        <h1>{{ snippet_hash }}</h1>
                         <h3>{{ viewSnippet.snippet_title }}</h3>
                         <p class="style-for-url">{{ viewSnippet.snippet_reference }}</p>
                         <p>{{ viewSnippet.snippet_content }}</p>
                     </div>
 
+                </div>
+            </div>
+        </div> -->
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+                    <div class="view_snippet">
+                        <h1>{{ viewSnippet.snippet_title }}</h1>
+                        <h6>{{ viewSnippet.snippet_reference }}</h6>
+                        <p>{{ viewSnippet.snippet_content }}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -20,17 +32,17 @@
 <script>
 
     export default {
-        data: function() {
+        data: function () {
             return {
                 snippet_hash: this.$route.params.hash,
             }
         },
         computed: {
-            viewSnippet: function() {
+            viewSnippet: function () {
                 var self = this;
 
-                for(var snippet of self.$store.state.snippetList) {
-                    if(snippet.snippet_hash === this.snippet_hash) {
+                for (var snippet of self.$store.state.snippetList) {
+                    if (snippet.snippet_hash === this.snippet_hash) {
                         return snippet;
                     }
                 }
@@ -41,7 +53,16 @@
 </script>
 
 <style>
-    .container {
+    .view_snippet {
+        margin-top: 40px;
+        padding: 30px;
+    }
+
+    p {
+        white-space: pre-wrap;
+    }
+
+    /* .container {
         max-width: 625px;
         margin: 0 auto;
     }
@@ -74,5 +95,5 @@
         color: #bbc1cd;
         font-size: 1.5rem;
         margin: 0;
-    }
+    } */
 </style>
