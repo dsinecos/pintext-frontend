@@ -1,9 +1,8 @@
 <template>
     <div>
-        <div class="container">
+        <!-- <div class="container">
             <div class="row" id="generate_permalink">
                 <div class="col-sm-6">
-                    <!-- <form id="snippet_form" method="post" enctype="application/x-www-form-urlencoded" action="http://localhost:2348/snippet/"> -->
                     <form id="snippet_form" v-on:submit.prevent="getSnippetURL">
                         <h3>Generate Permalink for Text snippet</h3>
                         <input type="text" name="snippet_title" placeholder="Title (Optional)" v-model="snippet_title">
@@ -35,53 +34,117 @@
                 </div>
 
             </div>
+        </div> -->
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12 snippet_container">
+                    <div class="row">
+
+                        <div class="col-sm-5 col-sm-offset-1 create_snippet">
+                            <h3 class="snippet_title">Create Snippet</h3>
+
+                            <div class="snippet_form">
+                                <!-- <form v-on:submit.prevent="getSnippetURL"> -->
+                                <form v-on:submit.prevent="">
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" name="title" placeholder="Title (Optional)" v-model="snippet_title">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" name="source" placeholder="Reference (URL) (Optional)" v-model="snippet_reference">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <textarea class="form-control" rows="12" name="textsnippet" placeholder="Paste your text snippet here (Required)" v-model="snippet_content"
+                                            required></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input class="form-control" type="hidden" name="snippet_created_on" v-model="snippet_created_on">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button class="btn btn-success btn-block btn-justify" type="submit" value="Generate Permalink" @click="getSnippetURL">Generate Permalink</button>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input ref="permalink" type="text" class="form-control" placeholder="Permalink" v-model="snippet_permalinkURL">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-primary" type="button" @click="copyPermalink">Copy</button>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-5 preview_snippet">
+                            <h3>Preview Snippet</h3>
+                            <!-- Insert Preview -->
+                            <h1 v-if="snippet_title === ''">Title</h1>
+                            <h1 v-else>{{snippet_title}}</h1>
+                            <h6 v-if="snippet_reference === ''">Reference</h6>
+                            <h6 v-else>{{snippet_reference}}</h6>
+                            <p v-if="snippet_content === ''">Snippet Content</p>
+                            <p v-else>{{snippet_content}}</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-    $(document).ready(function () {
-        $("#snippet_form").submit(function (e) {
+    // $(document).ready(function () {
+    //     $("#snippet_form").submit(function (e) {
 
-            e.preventDefault(); // Avoid to execute the actual submit of the form.
+    //         e.preventDefault(); // Avoid to execute the actual submit of the form.
 
-            //console.log("Inside the ajax thingy");
+    //         //console.log("Inside the ajax thingy");
 
-            var form = $(this);
-            var url = form.attr('action');
-            var method = form.attr('method');
+    //         var form = $(this);
+    //         var url = form.attr('action');
+    //         var method = form.attr('method');
 
-            var permalinkURL = window.location.href;
-            console.log("Host URL " + permalinkURL);
-            console.log("Target URL " + url);
+    //         var permalinkURL = window.location.href;
+    //         console.log("Host URL " + permalinkURL);
+    //         console.log("Target URL " + url);
 
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: form.serialize(),
-                success: function (data) {
-                    //$("#permalink").append(JSON.stringify(data, null, "  "))
-                    //alert(JSON.stringify(data, null, "  "));
-                    console.log(JSON.stringify(data, null, "  "));
-                    var completeURL = permalinkURL + JSON.stringify(data, null, "  ");
-                    var editedCompleteURL = completeURL.replace(/"/g, "");
-                    $("#permalink_clipboard").val(editedCompleteURL);
+    //         $.ajax({
+    //             type: "POST",
+    //             url: url,
+    //             data: form.serialize(),
+    //             success: function (data) {
+    //                 //$("#permalink").append(JSON.stringify(data, null, "  "))
+    //                 //alert(JSON.stringify(data, null, "  "));
+    //                 console.log(JSON.stringify(data, null, "  "));
+    //                 var completeURL = permalinkURL + JSON.stringify(data, null, "  ");
+    //                 var editedCompleteURL = completeURL.replace(/"/g, "");
+    //                 console.log(editedCompleteURL);
+    //                 $("#permalink_clipboard").val(editedCompleteURL);
 
-                },
-                error: function (data) {
-                    console.log('An error occurred.');
-                    console.log(data);
-                }
-            });
-        });
+    //             },
+    //             error: function (data) {
+    //                 console.log('An error occurred.');
+    //                 console.log(data);
+    //             }
+    //         });
+    //     });
 
 
-    });
+    // });
 
-    function copyToClipboard() {
-        $('#permalink_clipboard').select();
-        document.execCommand('copy');
-    }
+    // function copyToClipboard() {
+    //     $('#permalink_clipboard').select();
+    //     document.execCommand('copy');
+    // }
 
     export default {
         data: function () {
@@ -89,11 +152,14 @@
                 snippet_title: "",
                 snippet_reference: "",
                 snippet_content: "",
-                snippet_created_on: '05/05/2017'
+                snippet_created_on: '05/05/2017',
+                snippet_permalinkURL: ""
             }
         },
         methods: {
-            getSnippetURL: function() {
+            getSnippetURL: function () {
+                var self = this;
+
                 axios.post('http://localhost:2348/snippet/', {
                     snippet_title: this.snippet_title,
                     snippet_reference: this.snippet_reference,
@@ -102,10 +168,22 @@
                 })
                     .then(function (response) {
                         console.log(response.data);
+
+                        var permalink = response.data.permalink;
+                        var hostURL = window.location.href;
+                        var permalinkURL = hostURL + "snippet/" + permalink;
+
+                        self.snippet_permalinkURL = permalinkURL;
+
+                        console.log("Host URL " + permalinkURL);
                     })
                     .catch(function (error) {
                         console.log(error);
                     });
+            },
+            copyPermalink: function () {
+                this.$refs.permalink.select();
+                document.execCommand('copy');
             }
         }
     }
@@ -113,7 +191,32 @@
 </script>
 
 <style>
-    #snippet_form {
+    p {
+        white-space: pre-wrap;
+    }
+
+    .snippet_container {
+        margin: 20px;
+        padding: 30px;
+        /* border: solid 1px; */
+    }
+
+    .create_snippet {
+        padding: 30px;
+        /* border: solid 1px; */
+    }
+
+    .snippet_form {
+        margin-top: 18.76px;
+    }
+
+    .preview_snippet {
+        padding: 30px;
+        padding-left: 50px;
+        /* border: solid 1px; */
+    }
+
+    /* #snippet_form {
         padding: 20px;
         margin: 10px;
         border: 2px solid #F1F1F1;
@@ -160,5 +263,5 @@
         margin-bottom: 2.5rem;
         color: #333;
         font: 16px/1.4 'Open Sans', sans-serif;
-    }
+    } */
 </style>
