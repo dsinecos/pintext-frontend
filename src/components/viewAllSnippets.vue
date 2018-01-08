@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <div class="container" id="displayAllSnippets">
+        <!-- <div class="container" id="displayAllSnippets">
             <div class="row">
                 <div class="sm-col-12">
                     <div class="input-group" id="searchbar">
@@ -14,8 +14,8 @@
             <div class="row" v-for="textSnippet in filteredSnippets">
                 <div class="sm-col-12 snippet-card">
                     <p>
-                        <!-- <a v-bind:href="baseURL + textSnippet.snippet_hash" class="card-title">{{textSnippet.snippet_title}}</a> -->
-                        <!-- <router-link :to="'/snippet/dummy/'+textSnippet.snippet_hash" class="card-title">{{ textSnippet.snippet_title }}</router-link> -->
+                        <a v-bind:href="baseURL + textSnippet.snippet_hash" class="card-title">{{textSnippet.snippet_title}}</a>
+                        <router-link :to="'/snippet/dummy/'+textSnippet.snippet_hash" class="card-title">{{ textSnippet.snippet_title }}</router-link>
                         <router-link :to="'/snippet/'+textSnippet.snippet_hash" class="card-title">{{ textSnippet.snippet_title }}</router-link>
                         <p>
                             <p class="card-url">{{textSnippet.snippet_reference}}</p>
@@ -23,6 +23,30 @@
                             <div class="card-saved-data">
                                 <p>{{textSnippet.snippet_created_on}}</p>
                             </div>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+                    <div class="search-bar">
+                        <div class="input-group">
+                            <span class="input-group-addon glyphicon glyphicon-search" aria-hidden="true" id="search-icon"></span>
+                            <input type="text" v-model="searchQuery" class="form-control" placeholder="Search" aria-describedby="search-icon">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" v-for="textSnippet in filteredSnippets">
+                <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 snippet_card">
+                    <h1>
+                        <router-link :to="'/snippet/'+textSnippet.snippet_hash" class="card-title">{{ textSnippet.snippet_title }}</router-link>
+                    </h1>
+                    <h6>{{textSnippet.snippet_reference}}</h6>
+                    <p>{{textSnippet.snippet_content_brief}}</p>
                 </div>
             </div>
         </div>
@@ -75,7 +99,7 @@
                     // console.log(snippetCard_array);
 
                     var shortenSnippet = shortenedSnippet(snippetCard_array);
-                    
+
                     // console.log(shortenSnippet[0].snippet_title);
 
                     return shortenedSnippet(snippetCard_array);
@@ -102,15 +126,15 @@
                     // console.log("Is response an array or an object " + typeof response.data);
                     // console.log(response.data);
 
-                    
+
                     // var snippetData = self.$store.state.snippetList;
 
                     // How to parse an object and add to an array
-                    for(var snippet in response.data) {
+                    for (var snippet in response.data) {
                         // console.log(response.data[snippet]);
                         self.$store.state.snippetList.push(response.data[snippet]);
                     }
-                    
+
                     // console.log(typeof snippetData);
                     // console.log("This is the value of store snippetList");
                     // console.log(self.$store.state.snippetList);
@@ -124,7 +148,20 @@
 </script>
 
 <style>
-    #searchbar {
+    .search-bar {
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+
+    .snippet_card {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 30px;
+        background-color: #f7f7f7;
+        box-shadow: 0 0 2px #888888;
+    }
+
+    /* #searchbar {
         max-width: 500px;
         margin: auto;
         margin-top: 5%;
@@ -177,5 +214,5 @@
         float: right;
         font-family: "Whitney SSm A", "Whitney SSm B", sans-serif;
         color: rgb(179, 179, 179);
-    }
+    } */
 </style>

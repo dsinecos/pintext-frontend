@@ -29,5 +29,7 @@
 <style>
   body {
     background-color: #F8F8F8;
+    font-family: 'Open Sans', sans-serif;
+    color: #555;
   }
 </style>
