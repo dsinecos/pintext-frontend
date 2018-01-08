@@ -10,7 +10,7 @@
 <script>
   axios.defaults.withCredentials = true;
   axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-  
+
   export default {
     // data: function() {
     //   return {
@@ -27,5 +27,7 @@
 </script>
 
 <style>
-
+  body {
+    background-color: #F8F8F8;
+  }
 </style>
