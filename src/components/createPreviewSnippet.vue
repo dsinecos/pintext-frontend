@@ -160,7 +160,9 @@
             getSnippetURL: function () {
                 var self = this;
 
-                axios.post('http://localhost:2348/snippet/', {
+                var postURL = this.$store.state.baseURL + "/snippet/"
+
+                axios.post(postURL, {
                     snippet_title: this.snippet_title,
                     snippet_reference: this.snippet_reference,
                     snippet_content: this.snippet_content,

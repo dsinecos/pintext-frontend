@@ -39,7 +39,9 @@
             onSubmitLogin: function () {
                 var self = this;
 
-                axios.post('http://localhost:2348/user/login/', {
+                var postURL = this.$store.state.baseURL + "/user/login/";
+
+                axios.post(postURL, {
                     username: this.login.username,
                     password: this.login.password
                 })

@@ -121,7 +121,9 @@
             var self = this;
             self.$store.state.snippetList.length = 0;
 
-            axios.get("http://localhost:2348/snippet/")
+            var getURL = this.$store.state.baseURL + "/snippet/";
+
+            axios.get(getURL)
                 .then(function (response) {
                     // console.log("Is response an array or an object " + typeof response.data);
                     // console.log(response.data);

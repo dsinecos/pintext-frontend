@@ -17,7 +17,9 @@
         created: function () {
             var self = this;
 
-            axios.get('http://localhost:2348/user/logout/')
+            var getURL = this.$store.state.baseURL + "/user/logout";
+
+            axios.get(getURL)
                 .then(function (response) {
                     console.log(response);
                     self.serverResponse = response.data;
@@ -25,7 +27,7 @@
                         self.$store.state.authenticationStatus = false;
                         self.$store.state.snippetList.length = 0;
                         self.$store.state.viewSnippet = {};
-                        
+
                     }
                 })
                 .catch(function (error) {
@@ -38,5 +40,4 @@
 </script>
 
 <style>
-
 </style>

@@ -42,7 +42,9 @@
         },
         methods: {
             onSubmitSignup: function () {
-                axios.post('http://localhost:2348/user/signup', {
+                var postURL = this.$store.state.baseURL + "/user/signup";
+
+                axios.post(postURL, {
                     username: this.signup.username,
                     password: this.signup.password
                 })

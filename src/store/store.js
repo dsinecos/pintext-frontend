@@ -7,6 +7,7 @@ export const store = new Vuex.Store({
     state: {
         authenticationStatus: false,
         viewSnippet: {},
-        snippetList: []
+        snippetList: [],
+        baseURL: process.env.BASE_URL || "http://localhost:2348"
     }
 })
