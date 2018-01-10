@@ -4,6 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-4 col-sm-offset-4 login">
+                    <p>{{ message }}</p>
                     <p>Login</p>
                     <form v-on:submit.prevent="onSubmitLogin">
                         <div class="form-group">
@@ -31,8 +32,10 @@
             return {
                 login: {
                     username: '',
-                    password: '',
-                }
+                    password: ''
+                },
+                message: this.$route.query.message,
+                messageType: this.$route.query.type
             }
         },
         methods: {
@@ -52,11 +55,23 @@
                         if (response.status === 200) {
                             self.$store.state.authenticationStatus = true;
                             console.log(self.$store.state.authenticationStatus)
+                            self.$router.push({ path: '/' });
+                        } else if (response.status === 401) {
+
+                            // self.$router.push({ path: '/login/', query: { type: 'error', message: 'Login Failed, please try again' } });
+
+                            self.message = "Login failed, please try again";
+
                         }
 
                     })
                     .catch(function (error) {
                         console.log(error);
+
+                        // self.$router.push({ path: '/login/', query: { type: 'error', message: 'Login Failed, please try again' } })
+
+                        self.message = "Login failed, please try again";
+
                     });
             }
         }

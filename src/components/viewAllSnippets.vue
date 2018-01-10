@@ -118,33 +118,42 @@
             },
         },
         beforeCreate: function () {
-            var self = this;
-            self.$store.state.snippetList.length = 0;
 
-            var getURL = this.$store.state.baseURL + "/snippet/";
+            if (!this.$store.state.authenticationStatus) {
+                this.$router.push({ path: '/login', query: { type: "info", message: "Please login and try again" } });
+            } else {
 
-            axios.get(getURL)
-                .then(function (response) {
-                    // console.log("Is response an array or an object " + typeof response.data);
-                    // console.log(response.data);
+                var self = this;
+                self.$store.state.snippetList.length = 0;
+
+                var getURL = this.$store.state.baseURL + "/snippet/";
+
+                axios.get(getURL)
+                    .then(function (response) {
+                        // console.log("Is response an array or an object " + typeof response.data);
+                        // console.log(response.data);
 
 
-                    // var snippetData = self.$store.state.snippetList;
+                        // var snippetData = self.$store.state.snippetList;
 
-                    // How to parse an object and add to an array
-                    for (var snippet in response.data) {
-                        // console.log(response.data[snippet]);
-                        self.$store.state.snippetList.push(response.data[snippet]);
-                    }
+                        // How to parse an object and add to an array
+                        for (var snippet in response.data) {
+                            // console.log(response.data[snippet]);
+                            self.$store.state.snippetList.push(response.data[snippet]);
+                        }
 
-                    // console.log(typeof snippetData);
-                    // console.log("This is the value of store snippetList");
-                    // console.log(self.$store.state.snippetList);
-                })
-                .catch(function (err) {
-                    // console.log(err);
-                    // alert("Could not retrieve snippets");
-                })
+                        // console.log(typeof snippetData);
+                        // console.log("This is the value of store snippetList");
+                        // console.log(self.$store.state.snippetList);
+                    })
+                    .catch(function (err) {
+                        // console.log(err);
+                        // alert("Could not retrieve snippets");
+                    })
+
+            }
+
+
         }
     }
 </script>

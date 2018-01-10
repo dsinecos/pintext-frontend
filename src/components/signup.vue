@@ -4,6 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-4 col-sm-offset-4 signup">
+                    <p>{{ message }}</p>
                     <p>Sign Up</p>
                     <form v-on:submit.prevent="onSubmitSignup">
                         <div class="form-group">
@@ -37,12 +38,15 @@
                     username: '',
                     password: '',
                     repeatPassword: ''
-                }
+                },
+                message: this.$route.query.message,
+                messageType: this.$route.query.type
             }
         },
         methods: {
             onSubmitSignup: function () {
                 var postURL = this.$store.state.baseURL + "/user/signup";
+                var self = this;
 
                 axios.post(postURL, {
                     username: this.signup.username,
@@ -50,9 +54,19 @@
                 })
                     .then(function (response) {
                         console.log(response);
+
+                        if(response.data.developmentMessage === 'Success') {
+                            self.$router.push({ path: '/login', query: { type: 'info', message: 'Signup successful, Please Login' } })
+
+                        } else {
+                            self.message = 'Signup failed, please try again';
+
+                        }
                     })
                     .catch(function (error) {
                         console.log(error);
+
+                        self.message = 'Signup failed, please try again';
                     });
             }
         }

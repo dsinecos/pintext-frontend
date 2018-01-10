@@ -1,3 +1,5 @@
+import { store } from './store/store';
+
 import authenticatedNavbar from './components/authenticatedNavbar.vue';
 import unauthenticatedNavbar from './components/unauthenticatedNavbar.vue';
 
@@ -14,6 +16,8 @@ import viewAllSnippets from './components/viewAllSnippets.vue';
 import about from './components/about.vue';
 import contact from './components/contact.vue';
 
+import notFound from './components/notFound.vue';
+
 export const routes = [
     {
         path: '/',
@@ -22,6 +26,21 @@ export const routes = [
             'unauthenticated-navbar': unauthenticatedNavbar,
             'page-content': createPreviewSnippet
         }
+        // beforeEnter: function(to, from, next) {
+        //     // console.log("Inside route setup");
+        //     // console.log(document.cookie);
+        //     if(document.cookie) {
+        //         console.log("Cookie found");
+        //         console.log(document.cookie);
+        //         store.state.authenticationStatus = true;
+        //     } else {
+        //         console.log("No cookie Found")
+        //         console.log(document.cookie);
+        //         store.state.authenticationStatus = false;
+        //     }
+        //     // console.log(JSON.stringify(document.cookie, null, "  "));
+        //     next();
+        // }
     },
     // {
     //     path: '/login-signup/',
@@ -86,7 +105,25 @@ export const routes = [
             {
                 path: ':hash',
                 component: viewSingleSnippet
-            },            
+            },
         ]
+    },
+    {
+        path: '/notFound',
+        components: {
+            'authenticated-navbar': authenticatedNavbar,
+            'unauthenticated-navbar': unauthenticatedNavbar,
+            'page-content': notFound
+        }
+
+    },
+    {
+        path: '*',
+        components: {
+            'authenticated-navbar': authenticatedNavbar,
+            'unauthenticated-navbar': unauthenticatedNavbar,
+            'page-content': notFound
+        }
+
     }
 ]

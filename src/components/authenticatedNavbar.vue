@@ -50,6 +50,17 @@
 </script>
 
 <style>
+    .navbar-default {
+        background-color: #ecf0f1;
+    }
+
+    /* .navbar-default .navbar-brand {
+        color: #16a085;
+    }
+
+    .navbar-default .navbar-nav li a {
+        color: #16a085;
+    } */
     /* ul {
         list-style-type: none;
         background-color: #F8F9FA;

@@ -19,9 +19,10 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
                     <div class="view_snippet">
-                        <h1>{{ viewSnippet.snippet_title }}</h1>
-                        <h6>{{ viewSnippet.snippet_reference }}</h6>
-                        <p>{{ viewSnippet.snippet_content }}</p>
+                        <!-- <h1>Testing</h1> -->
+                        <h1>{{ singleSnippet.snippet_title }}</h1>
+                        <h6>{{ singleSnippet.snippet_reference }}</h6>
+                        <p>{{ singleSnippet.snippet_content }}</p>
                     </div>
                 </div>
             </div>
@@ -35,19 +36,90 @@
         data: function () {
             return {
                 snippet_hash: this.$route.params.hash,
+                singleSnippet: ""
             }
         },
-        computed: {
+        // computed: {
+        //     viewSnippet: function () {
+        //         var self = this;
+
+
+
+        //         if (self.$store.state.snippetList.length) {
+
+        //             for (var snippet of self.$store.state.snippetList) {
+
+        //                 if (snippet.snippet_hash === this.snippet_hash) {
+        //                     return snippet;
+        //                 }
+        //             }
+
+        //         } else {
+        //             // Make a get call to backend
+
+        //             var getURL = this.$store.state.baseURL + "/snippet/" + self.snippet_hash;
+        //             console.log("About to make axios call");
+
+        //             axios.get(getURL)
+        //                 .then(function (response) {
+        //                     console.log(response.data);
+        //                     return response.data;
+
+        //                 })
+        //                 .catch(function (err) {
+        //                     console.log(err);
+        //                 })
+        //         }
+        //     }
+        // },
+        methods: {
             viewSnippet: function () {
-                var self = this;
+
+
+
+            }
+        },
+        watch: {
+            singleSnippet: function(newValue) {
+                console.log(newValue);
+
+            }
+        },
+        beforeMount: function () {
+            var self = this;
+
+            if (self.$store.state.snippetList.length) {
 
                 for (var snippet of self.$store.state.snippetList) {
+
                     if (snippet.snippet_hash === this.snippet_hash) {
-                        return snippet;
+                        self.$store.state.viewSnippet = snippet;
+                        self.singleSnippet = snippet;
                     }
                 }
+
+            } else {
+                // Make a get call to backend
+
+                var getURL = this.$store.state.baseURL + "/snippet/" + self.snippet_hash;
+                console.log("About to make axios call");
+
+                axios.get(getURL)
+                    .then(function (response) {
+                        console.log(response.data);
+                        self.$store.state.viewSnippet = response.data;
+                        self.singleSnippet = response.data;
+                    })
+                    .catch(function (err) {
+                        console.log(err);
+                        self.$router.push({ path: '/notFound' });
+                    })
             }
+
         }
+        // beforeCreate: function () {
+
+        // }
     }
 
 </script>

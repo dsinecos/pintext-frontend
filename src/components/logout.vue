@@ -1,8 +1,8 @@
 <template>
     <div>
-        <p> This is the logout page </p>
+        <!-- <p> This is the logout page </p>
         <p> This is the response </p>
-        <p> {{ serverResponse }} </p>
+        <p> {{ serverResponse }} </p> -->
     </div>
 </template>
 
@@ -27,6 +27,8 @@
                         self.$store.state.authenticationStatus = false;
                         self.$store.state.snippetList.length = 0;
                         self.$store.state.viewSnippet = {};
+                        
+                        self.$router.push({ path: '/' })
 
                     }
                 })
