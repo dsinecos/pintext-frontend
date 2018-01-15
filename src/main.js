@@ -9,7 +9,8 @@ require('file-loader?name=[name].[ext]!../index.html');
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-  routes
+  routes,
+  mode: 'history'
 });
 
 router.beforeEach(function (to, from, next) {

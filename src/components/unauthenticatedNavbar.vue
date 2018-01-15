@@ -8,7 +8,7 @@
             <li><router-link to="/login-signup/">Login</router-link></li>
         </ul> -->
 
-        <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#pintext-unauthenticated-navbar"

@@ -124,6 +124,5 @@ export const routes = [
             'unauthenticated-navbar': unauthenticatedNavbar,
             'page-content': notFound
         }
-
     }
 ]

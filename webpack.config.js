@@ -55,7 +55,8 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"',
-        BASE_URL: '"https://pintext-backend.herokuapp.com"'
+        // BASE_URL: '"https://pintext-backend.herokuapp.com/api"',
+        BASE_URL: '"https://pintextapp.herokuapp.com/api"'
       }
     }),
     new webpack.optimize.UglifyJsPlugin({

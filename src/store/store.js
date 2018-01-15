@@ -8,6 +8,6 @@ export const store = new Vuex.Store({
         authenticationStatus: false,
         viewSnippet: {},
         snippetList: [],
-        baseURL: process.env.BASE_URL || "http://localhost:2348"
+        baseURL: process.env.BASE_URL || "http://localhost:2348/api"
     }
 })
