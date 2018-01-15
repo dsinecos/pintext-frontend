@@ -14,15 +14,15 @@ const router = new VueRouter({
 });
 
 router.beforeEach(function (to, from, next) {
-  console.log("Inside beforeEach setup");
+  // console.log("Inside beforeEach setup");
 
   if (document.cookie) {
-    console.log("Cookie found");
-    console.log(document.cookie);
+    // console.log("Cookie found");
+    // console.log(document.cookie);
     store.state.authenticationStatus = true;
   } else {
-    console.log("No cookie Found")
-    console.log(document.cookie);
+    // console.log("No cookie Found")
+    // console.log(document.cookie);
     store.state.authenticationStatus = false;
   }
 

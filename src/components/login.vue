@@ -49,12 +49,12 @@
                     password: this.login.password
                 })
                     .then(function (response) {
-                        console.log(response.status);
-                        console.log(response.data);
+                        // console.log(response.status);
+                        // console.log(response.data);
 
                         if (response.status === 200) {
                             self.$store.state.authenticationStatus = true;
-                            console.log(self.$store.state.authenticationStatus)
+                            // console.log(self.$store.state.authenticationStatus)
                             self.$router.push({ path: '/' });
                         } else if (response.status === 401) {
 
@@ -66,7 +66,7 @@
 
                     })
                     .catch(function (error) {
-                        console.log(error);
+                        // console.log(error);
 
                         // self.$router.push({ path: '/login/', query: { type: 'error', message: 'Login Failed, please try again' } })
 

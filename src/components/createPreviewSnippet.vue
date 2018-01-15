@@ -169,7 +169,7 @@
                     snippet_created_on: this.snippet_created_on
                 })
                     .then(function (response) {
-                        console.log(response.data);
+                        // console.log(response.data);
 
                         var permalink = response.data.permalink;
                         var hostURL = window.location.href;
@@ -177,10 +177,10 @@
 
                         self.snippet_permalinkURL = permalinkURL;
 
-                        console.log("Host URL " + permalinkURL);
+                        // console.log("Host URL " + permalinkURL);
                     })
                     .catch(function (error) {
-                        console.log(error);
+                        // console.log(error);
                     });
             },
             copyPermalink: function () {

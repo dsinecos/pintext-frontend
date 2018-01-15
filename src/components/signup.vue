@@ -53,7 +53,7 @@
                     password: this.signup.password
                 })
                     .then(function (response) {
-                        console.log(response);
+                        // console.log(response);
 
                         if(response.data.developmentMessage === 'Success') {
                             self.$router.push({ path: '/login', query: { type: 'info', message: 'Signup successful, Please Login' } })
@@ -64,7 +64,7 @@
                         }
                     })
                     .catch(function (error) {
-                        console.log(error);
+                        // console.log(error);
 
                         self.message = 'Signup failed, please try again';
                     });

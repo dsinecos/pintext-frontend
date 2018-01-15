@@ -11,9 +11,9 @@
   axios.defaults.withCredentials = true;
   axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
-  console.log("This is the process environment variable");
-  console.log("Base url : " + process.env.BASE_URL);
-  console.log("Environment : " + process.env.NODE_ENV);
+  // console.log("This is the process environment variable");
+  // console.log("Base url : " + process.env.BASE_URL);
+  // console.log("Environment : " + process.env.NODE_ENV);
 
   export default {
     // data: function() {

@@ -21,7 +21,7 @@
 
             axios.get(getURL)
                 .then(function (response) {
-                    console.log(response);
+                    // console.log(response);
                     self.serverResponse = response.data;
                     if (response.data.developmentMessage === 'Success') {
                         self.$store.state.authenticationStatus = false;
@@ -33,7 +33,7 @@
                     }
                 })
                 .catch(function (error) {
-                    console.log(error);
+                    // console.log(error);
                     self.serverResponse = error;
                 });
         }

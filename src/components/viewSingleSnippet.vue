@@ -81,7 +81,7 @@
         },
         watch: {
             singleSnippet: function(newValue) {
-                console.log(newValue);
+                // console.log(newValue);
 
             }
         },
@@ -102,16 +102,16 @@
                 // Make a get call to backend
 
                 var getURL = this.$store.state.baseURL + "/snippet/" + self.snippet_hash;
-                console.log("About to make axios call");
+                // console.log("About to make axios call");
 
                 axios.get(getURL)
                     .then(function (response) {
-                        console.log(response.data);
+                        // console.log(response.data);
                         self.$store.state.viewSnippet = response.data;
                         self.singleSnippet = response.data;
                     })
                     .catch(function (err) {
-                        console.log(err);
+                        // console.log(err);
                         self.$router.push({ path: '/notFound' });
                     })
             }
